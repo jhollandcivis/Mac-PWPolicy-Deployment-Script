@@ -1,0 +1,109 @@
+<dict>
+ <key>policyCategoryAuthentication</key>
+  <array>
+   <dict>
+    <key>policyContent</key>
+     <string>(policyAttributeFailedAuthentications &lt; policyAttributeMaximumFailedAuthentications) OR (policyAttributeCurrentTime &gt; (policyAttributeLastFailedAuthenticationTime + autoEnableInSeconds))</string>
+    <key>policyIdentifier</key>
+     <string>Authentication Lockout</string>
+    <key>policyParameters</key>
+  <dict>
+  <key>autoEnableInSeconds</key>
+   <integer>300</integer>
+   <key>policyAttributeMaximumFailedAuthentications</key>
+   <integer>5</integer>
+  </dict>
+ </dict>
+ </array>
+
+ <key>policyCategoryPasswordChange</key>
+  <array>
+   <dict>
+    <key>policyContent</key>
+     <string>policyAttributeCurrentTime &gt; policyAttributeLastPasswordChangeTime + (policyAttributeExpiresEveryNDays * 24 * 60 * 60)</string>
+    <key>policyIdentifier</key>
+     <string>Change every 121 days</string>
+    <key>policyParameters</key>
+    <dict>
+     <key>policyAttributeExpiresEveryNDays</key>
+      <integer>121</integer>
+    </dict>
+   </dict>
+  </array>
+
+  <key>policyCategoryPasswordContent</key>
+ <array>
+  <dict>
+   <key>policyContent</key>
+    <string>policyAttributePassword matches '.{8,}+'</string>
+   <key>policyIdentifier</key>
+    <string>com.apple.policy.legacy.minChars</string>
+   <key>policyParameters</key>
+   <dict>
+    <key>minimumLength</key>
+     <integer>8</integer>
+   </dict>
+  </dict>
+
+  <dict>
+   <key>policyContent</key>
+    <string>policyAttributePassword matches '(.*[0-9].*){1,}+'</string>
+   <key>policyIdentifier</key>
+    <string>com.apple.policy.legacy.requiresNumeric</string>
+   <key>policyParameters</key>
+   <dict>
+   <key>minimumNumericCharacters</key>
+    <integer>1</integer>
+   </dict>
+  </dict>
+
+  <dict>
+   <key>policyContent</key>
+    <string>policyAttributePassword matches '(.*[a-z].*){1,}+'</string>
+   <key>policyIdentifier</key>
+    <string>com.apple.policy.legacy.requiresAlpha</string>
+   <key>policyParameters</key>
+   <dict>
+   <key>minimumAlphaCharactersLowerCase</key>
+    <integer>1</integer>
+   </dict>
+  </dict>
+
+  <dict>
+   <key>policyContent</key>
+    <string>policyAttributePassword matches '(.*[A-Z].*){1,}+'</string>
+   <key>policyIdentifier</key>
+    <string>com.apple.policy.legacy.requiresAlphaUpperCase</string>
+   <key>policyParameters</key>
+   <dict>
+   <key>minimumAlphaCharacters</key>
+    <integer>1</integer>
+   </dict>
+  </dict>
+
+  <dict>
+   <key>policyContent</key>
+    <string>policyAttributePassword matches '(.*[^a-zA-Z0-9].*){1,}+'</string>
+   <key>policyIdentifier</key>
+    <string>com.apple.policy.legacy.requiresSymbol</string>
+   <key>policyParameters</key>
+   <dict>
+   <key>minimumSymbols</key>
+    <integer>1</integer>
+   </dict>
+  </dict>
+
+  <dict>
+   <key>policyContent</key>
+    <string>none policyAttributePasswordHashes in policyAttributePasswordHistory</string>
+   <key>policyIdentifier</key>
+    <string>Password History</string>
+   <key>policyParameters</key>
+   <dict>
+    <key>policyAttributePasswordHistoryDepth</key>
+     <integer>5</integer>
+   </dict>
+  </dict>
+
+ </array>
+</dict>
